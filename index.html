@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nisanur Genc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.17/dist/98.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<div class="desktop">
+    <div class="icon" onclick="openWindow('control-panel-window')">
+        <img src="https://win98icons.alexmeub.com/icons/png/directory_control_panel-3.png" alt="Control Panel">
+        <div>Control Panel</div>
+    </div>
+    <div class="icon" onclick="openWindow('about-me-window')">
+	<img src="https://win98icons.alexmeub.com/icons/png/notepad-3.png" alt="About Me">
+  	<div>AboutMe.txt</div>
+    </div>
+</div>
+
+<!-- Control Panel Window -->
+<div class="window" id="control-panel-window" style="font-size: 16px; top: 100px; left: 100px;">
+    <div class="title-bar" onmousedown="startDrag(event, 'control-panel-window')">
+        <div class="title-bar-text">Control Panel</div>
+        <div class="title-bar-controls">
+    		<button aria-label="Minimize" onclick="minimizeWindow('control-panel-window')"></button>
+    		<button aria-label="Close" onclick="closeWindow('control-panel-window')"></button>
+	</div>
+
+    </div>
+    <div class="window-body">
+        <div class="control-panel-grid">
+            <div class="control-panel-item" onclick="openWindow('about-me-window')">
+                <img src="https://win98icons.alexmeub.com/icons/png/info_book-0.png">
+                <span>About Me</span>
+            </div>
+            <div class="control-panel-item" onclick="openWindow('skills-window')">
+                <img src="https://win98icons.alexmeub.com/icons/png/gear-0.png">
+                <span>Skills</span>
+            </div>
+            <div class="control-panel-item" onclick="openWindow('experience-window')">
+                <img src="https://win98icons.alexmeub.com/icons/png/folder_open_file_mydocs-0.png">
+                <span>Experience</span>
+            </div>
+            <div class="control-panel-item" onclick="openWindow('education-window')">
+                <img src="https://win98icons.alexmeub.com/icons/png/certificate-0.png">
+                <span>Education</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Me Window -->
+<div class="window" id="about-me-window" style="top: 120px; left: 120px; width: 600px;">
+  <div class="title-bar" onmousedown="startDrag(event, 'about-me-window')">
+    <div class="title-bar-text">AboutMe.txt - Notepad</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" onclick="minimizeWindow('about-me-window')"></button>
+      <button aria-label="Close" onclick="closeWindow('about-me-window')"></button>
+    </div>
+  </div>
+  <div class="window-body" style="padding: 0;">
+	<!-- Menu Bar -->
+	<div style="background: #c0c0c0; color: black; padding: 2px 6px; font-size: 12px; font-family: 'MS Sans Serif', sans-serif; display: flex; gap: 20px;">
+	    <span style="cursor: default;"><u>F</u>ile</span>
+	    <span style="cursor: default;"><u>E</u>dit</span>
+	    <span style="cursor: default;"><u>S</u>earch</span>
+	    <span style="cursor: default;"><u>H</u>elp</span>
+	</div>
+
+    <!-- Toolbar (optional) -->
+    <div style="background: #dfdfdf; padding: 2px 6px; border-bottom: 2px inset #fff;">
+      <button class="button">Print</button>
+      <button class="button">Save</button>
+    </div>
+
+    <!-- Notepad Text Area -->
+    <textarea class="field" readonly style="font-size: 16px; width: 100%; height: 500px; resize: none; border: none; padding: 8px; box-sizing: border-box;">
+I enjoy solving problems, learning new things, and creating meaningful experiences with AI. 
+I’ve sharpened my technical abilities while building strong, collaborative connections and am 
+always adapting, growing, and seeking ways to make a real impact.
+
+Passionate about software design, AI, and product management, I’m dedicated to leveraging 
+technology for meaningful social change.
+    </textarea>
+  </div>
+</div>
+
+<!-- Skills Window -->
+<div class="window" id="skills-window" style="top: 140px; left: 140px;">
+    <div class="title-bar" onmousedown="startDrag(event, 'skills-window')">
+        <div class="title-bar-text">Skills</div>
+        <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="minimizeWindow('skills-window')"></button>
+    		<button aria-label="Close" onclick="closeWindow('skills-window')"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <ul>
+            <li>Programming: JavaScript, Python, C++</li>
+            <li>Frameworks: React, Node.js, Django</li>
+            <li>Tools: Git, Docker, Webpack</li>
+            <li>AI/ML: TensorFlow, PyTorch</li>
+            <li>Product Management: Agile, Scrum</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Experience Window -->
+<div class="window" id="experience-window" style="top: 160px; left: 160px;">
+    <div class="title-bar" onmousedown="startDrag(event, 'experience-window')">
+        <div class="title-bar-text">Experience</div>
+        <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="minimizeWindow('experience-window')"></button>
+    		<button aria-label="Close" onclick="closeWindow('experience-window')"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <ul>
+            <li>Software Engineer, TechCorp (2020–Present)</li>
+            <li>AI Research Intern, InnovateAI (2019–2020)</li>
+            <li>Product Manager, DevSolutions (2017–2019)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Education Window -->
+<div class="window" id="education-window" style="top: 180px; left: 180px;">
+    <div class="title-bar" onmousedown="startDrag(event, 'education-window')">
+        <div class="title-bar-text">Education</div>
+        <div class="title-bar-controls">
+                <button aria-label="Minimize" onclick="minimizeWindow('education-window')"></button>
+    		<button aria-label="Close" onclick="closeWindow('education-window')"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <ul>
+            <li>M.Sc. in Computer Science – University of Technology (2015–2017)</li>
+            <li>B.Sc. in Software Engineering – Tech University (2011–2015)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Taskbar Start Button -->
+<div class="taskbar">
+    <button class="start-button">
+        <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start" style="width:16px; height:16px; margin-right:4px;">
+        <b>Start</b>
+    </button>
+</div>
+
+<!-- Start Menu -->
+<div id="start-menu" class="start-menu" style="display: none;">
+    <div class="start-menu-item" onclick="openWindow('about-me-window')">
+        <img src="https://win98icons.alexmeub.com/icons/png/folder_programs-0.png" alt="Programs"> Programs
+    </div>
+    <div class="start-menu-item">
+        <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" alt="Documents"> Documents
+    </div>
+    <div class="start-menu-item">
+        <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-4.png" alt="Help"> Help
+    </div>
+    <div class="start-menu-item" onclick="openShutdownDialog()">
+        <img src="https://win98icons.alexmeub.com/icons/png/shut_down_normal-0.png" alt="Shut Down"> Shut Down
+    </div>
+</div>
+
+<!-- Shutdown Confirmation Dialog -->
+<div id="shutdown-dialog" class="window" style="
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    z-index: 1000;">
+    <div class="title-bar">
+        <div class="title-bar-text">Shut Down Windows</div>
+        <div class="title-bar-controls">
+            <button aria-label="Close" onclick="closeShutdownDialog()"></button>
+        </div>
+    </div>
+    <div class="window-body" style="font-size: 14px; display: flex; align-items: flex-start;">
+        <img src="https://win98icons.alexmeub.com/icons/png/shut_down_normal-0.png" 
+             alt="Shutdown Icon" 
+             style="margin-right: 10px; width: 32px; height: 32px;">
+        <div style="flex: 1;">
+            <p style="margin: 10px 0;">What do you want the computer to do?</p>
+            <form id="shutdown-options">
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; align-items: flex-start;">
+                    <div class="field-row">
+                        <input id="shutdown" type="radio" name="action" value="shutdown" checked>
+                        <label for="shutdown">Shut down</label>
+                    </div>
+                    <div class="field-row">
+                        <input id="restart" type="radio" name="action" value="restart">
+                        <label for="restart">Restart</label>
+                    </div>
+                    <div class="field-row">
+                        <input id="msdos" type="radio" name="action" value="msdos">
+                        <label for="msdos">Restart in MS-DOS mode</label>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                    <button type="button" onclick="confirmShutdown()">OK</button>
+                    <button type="button" onclick="closeShutdownDialog()">Cancel</button>
+                    <button type="button">Help</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
+
