@@ -114,6 +114,10 @@ document.addEventListener('click', (e) => {
     }
 });
 
+function openHelpWindow() {
+    openWindow('help-window');
+}
+
 function openShutdownDialog() {
     document.getElementById('shutdown-dialog').style.display = 'block';
 }
@@ -127,9 +131,39 @@ function confirmShutdown() {
     if (selected === 'shutdown') {
         triggerShutdown();
     } else if (selected === 'restart') {
-        alert('Simulated Restart (not implemented)');
+        location.reload();
     } else if (selected === 'msdos') {
-        alert('Simulated MS-DOS Mode (not implemented)');
+        alert('C:\\WINDOWS>run msdos.bat\nError: Brain not found. Press any key to panic.');
     }
 }
 
+function openHelpDialog() {
+    document.getElementById('help-dialog').style.display = 'block';
+}
+
+function closeHelpDialog() {
+    document.getElementById('help-dialog').style.display = 'none';
+}
+
+function triggerShutdown() {
+     // Clear the page content
+    document.body.innerHTML = '';
+    document.documentElement.style.backgroundColor = 'black'; // Set <html> background
+
+    // Create splash image
+    const splash = document.createElement('img');
+    splash.src = 'images/splash.webp'; // Or your shutdown image path
+    splash.alt = 'Shutting down...';
+    splash.style.position = 'fixed';
+    splash.style.top = '0';
+    splash.style.left = '0';
+    splash.style.width = '100vw';
+    splash.style.height = '100vh';
+    splash.style.zIndex = '9999';
+    document.body.appendChild(splash);
+
+    // Redirect after 3 seconds
+    setTimeout(() => {
+        window.location.href = 'https://www.google.com/';
+    }, 2500);
+}
