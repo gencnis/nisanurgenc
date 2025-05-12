@@ -74,6 +74,13 @@ body {
     font-size: 16px !important;
 }
 
+.centered-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 textarea.field {
     font-family: 'Courier New', monospace;
     font-size: 14px;
@@ -143,4 +150,3 @@ textarea.field {
         height: 40px;
     }
 }
-
