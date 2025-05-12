@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.17/dist/98.css">
     <link rel="stylesheet" href="css/custom.css">
     <link rel="icon" href="images/icon-2.ico">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:title" content="Nisanur Genc" />
+    <meta property="og:description" content="My nostalgic digital corner — fully hand-coded by me, for those curious enough to explore." />
+    <meta property="og:image" content="https://nisanurgenc.com/images/preview.png" />
+    <meta property="og:url" content="https://nisanurgenc.com" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nisanur Genc">
+    <meta name="twitter:description" content="My nostalgic digital corner — fully hand-coded by me, for those curious enough to explore." />
+    <meta name="twitter:image" content="https://nisanurgenc.com/images/preview.png">
+    
+    <!-- WhatsApp, Slack, Discord, Telegram (use OG tags) -->
+
 </head>
 <body>
 
@@ -146,9 +162,9 @@ technology for meaningful social change.
 
 <!-- Taskbar Start Button -->
 <div class="taskbar">
-    <button class="start-button">
-        <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start" style="width:16px; height:16px; margin-right:4px;">
-        <b>Start</b>
+    <button class="start-button style="top: 50%">
+        <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start" style="top: 50%; width:16px; height:16px; margin-right:4px;">
+        <b style="top: 50%">Start</b>
     </button>
 </div>
 
@@ -160,12 +176,30 @@ technology for meaningful social change.
     <div class="start-menu-item">
         <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" alt="Documents"> Documents
     </div>
-    <div class="start-menu-item">
+    <div class="start-menu-item" onclick="openHelpWindow()">
         <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-4.png" alt="Help"> Help
     </div>
     <div class="start-menu-item" onclick="openShutdownDialog()">
         <img src="https://win98icons.alexmeub.com/icons/png/shut_down_normal-0.png" alt="Shut Down"> Shut Down
     </div>
+</div>
+
+<!-- Help Window -->
+<div id="help-window" class="window centered-window" style="display: none; width: 500px;">
+  <div class="title-bar">
+    <div class="title-bar-text">Help</div>
+    <div class="title-bar-controls">
+      <button aria-label="Close" onclick="closeWindow('help-window')"></button>
+    </div>
+  </div>
+  <div class="window-body" style="padding: 10px; font-size: 14px;">
+    <p><b>So... you clicked Help.</b></p>
+    <p>I built this whole space myself — just me, some code, and a lot of curiosity.</p>
+    <p>It started as a fun little project when I wanted to escape the usual noise for a bit. And then it turned into… well, this.</p>
+    <p>It’s a place that feels like mine. A mix of cool things I like, nostalgic vibes, and some personality thrown in.</p>
+    <p>You can find my résumé in the Start menu or on Desktop if that’s what you’re after. Or feel free to explore — there are bits and pieces of me scattered all around.</p>
+    <p>Have fun poking around. And if you ever want to say hi, you can reach me at <a href="mailto:nisagenc.dev@gmail.com">nisagenc.dev@gmail.com</a>.</p>
+  </div>
 </div>
 
 <!-- Shutdown Confirmation Dialog -->
@@ -206,9 +240,32 @@ technology for meaningful social change.
                 <div style="display: flex; justify-content: flex-end; gap: 8px;">
                     <button type="button" onclick="confirmShutdown()">OK</button>
                     <button type="button" onclick="closeShutdownDialog()">Cancel</button>
-                    <button type="button">Help</button>
+                    <button type="button" onclick="openHelpDialog()">Help</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- Help Dialog -->
+<div id="help-dialog" class="window" style="
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    z-index: 1001;">
+    <div class="title-bar">
+        <div class="title-bar-text">Windows Help</div>
+        <div class="title-bar-controls">
+            <button aria-label="Close" onclick="closeHelpDialog()"></button>
+        </div>
+    </div>
+    <div class="window-body" style="padding: 10px; font-size: 14px;">
+        <p>So... you actually clicked Help. Brave move.</p>
+        <p>Pro tip: Hitting OK solves 97% of all tech problems. The rest? Just reboot.</p>
+        <div style="text-align: right; margin-top: 10px;">
+            <button onclick="closeHelpDialog()">OK</button>
         </div>
     </div>
 </div>
@@ -217,4 +274,3 @@ technology for meaningful social change.
 
 </body>
 </html>
-
