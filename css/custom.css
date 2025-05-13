@@ -1,32 +1,36 @@
+/* ------------------------------
+   Global Styles and Body Setup
+------------------------------ */
 body {
-    background: url(../images/wallpaper.webp) no-repeat;
-    background-size: 100%  100%;
+    background: url(../images/wallpaper.webp) no-repeat center center fixed;
+    background-size: cover;
     font-family: 'MS Sans Serif', sans-serif;
     margin: 0;
     height: 100vh;
     overflow: hidden;
     position: relative;
-    user-select: none;        
+    user-select: none;
     -webkit-user-select: none;
-    -moz-user-select: none;    
-    -ms-user-select: none;     
+    -moz-user-select: none;
+    -ms-user-select: none;
     font-size: 16px !important;
 }
+
+/* ------------------------------
+   Desktop Layout and Icons
+------------------------------ */
 .desktop {
     display: flex;
-    flex-direction: column;  /* stack vertically */
-    align-items: flex-start; /* align to the left */
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: calc(100vh - 40px); /* leave space for taskbar */
+    width: 100px; /* just a bit wider than icon */
     padding: 10px;
     image-rendering: pixelated;
+    gap: 6px; /* tighten vertical spacing */
 }
-.top-right-image {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 70px; 
-    height: 70px;
-    z-index: 1000;
-}
+
 .icon {
     width: 70px;
     margin: 10px;
@@ -35,12 +39,17 @@ body {
     font-size: 16px !important;
     color: white;
     font-family: 'MS Sans Serif', sans-serif;
+    padding: 4px;
+    border: 2px solid transparent;
+    border-radius: 2px;
 }
+
 .icon img {
-    width: 32px;
-    height: 32px;
-    image-rendering: pixelated;s
+    width: 45px;
+    height: 45px;
+    image-rendering: pixelated;
 }
+
 .icon div {
     font-family: 'MS Sans Serif', sans-serif !important;
     font-size: 12px !important;
@@ -49,6 +58,27 @@ body {
     margin-top: 4px;
     line-height: 1.2;
 }
+
+.icon.selected {
+    background-color: rgba(0, 120, 215, 0.4); /* Windows 98-style blue glow */
+    border: 2px dotted #ffffff;
+}
+
+/* ------------------------------
+   Top Right Image Overlay
+------------------------------ */
+.top-right-image {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 70px;
+    height: 70px;
+    z-index: 1000;
+}
+
+/* ------------------------------
+   Control Panel Styles
+------------------------------ */
 .control-panel-grid {
     display: flex;
     flex-wrap: wrap;
@@ -56,22 +86,29 @@ body {
     padding: 10px;
     font-size: 16px !important;
 }
+
 .control-panel-item {
     width: 80px;
     text-align: center;
     cursor: pointer;
     font-size: 16px !important;
 }
+
 .control-panel-item img {
     width: 32px;
     height: 32px;
     font-size: 16px !important;
 }
+
 .control-panel-item span {
     display: block;
     margin-top: 5px;
     font-size: 16px !important;
 }
+
+/* ------------------------------
+   Window and Modal Windows
+------------------------------ */
 .window {
     position: absolute;
     display: none;
@@ -83,14 +120,14 @@ body {
 }
 
 .window-body ul {
-  padding-left: 20px;
-  margin: 0;
+    padding-left: 20px;
+    margin: 0;
 }
 
 .window-body li {
-  margin-bottom: 15px;
-  line-height: 1.4;
-  font-size: 15px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-size: 15px;
 }
 
 .centered-window {
@@ -100,11 +137,30 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* ------------------------------
+   Form Elements (Textarea, Fields)
+------------------------------ */
 textarea.field {
     font-family: 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.4;
 }
+
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------------------
+   Taskbar and Start Menu
+------------------------------ */
 .taskbar {
     font-size: 16px !important;
     position: absolute;
@@ -116,17 +172,17 @@ textarea.field {
     height: 30px;
     display: flex;
     align-items: center;
+    z-index: 9999;
 }
 
 .start-menu {
     position: absolute;
-    bottom: 30px; /* right above the taskbar */
     left: 0;
     width: 200px;
     background: #c0c0c0;
     border: 2px outset white;
     font-family: 'MS Sans Serif', sans-serif;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .start-menu-item {
@@ -136,12 +192,6 @@ textarea.field {
     cursor: pointer;
     font-size: 14px;
     margin-bottom: 5px;
-}
-
-.field-row {
-    display: flex;
-    gap: 4px;
-    justify-content: flex-end;
 }
 
 .start-menu-item img {
@@ -156,16 +206,80 @@ textarea.field {
     color: white;
 }
 
-.field-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 4px;
+/* ------------------------------
+   Responsive Adjustments
+------------------------------ */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px !important;
+        overflow-y: auto;
+    }
+
+    .desktop {
+        padding: 6px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .icon {
+        width: 60px;
+        margin: 6px;
+        font-size: 14px !important;
+    }
+
+    .icon img,
+    .start-button img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .icon div {
+        font-size: 11px !important;
+    }
+
+    .window {
+        width: 90vw;
+        left: 5vw;
+        top: 80px;
+    }
+
+    .control-panel-item {
+        width: 60px;
+    }
+
+    .control-panel-item img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .control-panel-item span {
+        font-size: 13px !important;
+    }
+
+    .taskbar {
+        flex-direction: column;
+        height: auto;
+        padding: 4px 0;
+        gap: 4px;
+    }
+    
+    .start-button {
+        height: 24px;
+        margin-left: 2px;
+    }
+
+    .start-button img {
+        height: 100%;
+        width: auto;
+    }
 }
 
-@media (max-width: 600px) {
-    .icon img, .start-button img {
-        width: 40px;
-        height: 40px;
+    .start-menu {
+        left: 0;
+        bottom: 30px;
     }
+}
+
 }
