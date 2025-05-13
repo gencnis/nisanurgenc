@@ -1,3 +1,83 @@
+/* MAIN.JS */
+
+/* --------------------------------------DESKTOP ICON SELECTION & DRAGGING---------------------------------------------------------- */
+
+function enableIconSelectionAndDragging() {
+    const icons = document.querySelectorAll('.icon');
+    const desktop = document.querySelector('.desktop');
+
+    icons.forEach((icon) => {
+        let isDragging = false;
+        let shiftX, shiftY;
+
+        // SINGLE CLICK = SELECT
+        icon.addEventListener('click', (e) => {
+            icons.forEach(i => i.classList.remove('selected')); // Clear others
+            icon.classList.add('selected');
+        });
+
+	icon.addEventListener('mousedown', function (e) {
+	    const isImage = e.target.tagName === 'IMG';
+	    const isLabel = e.target.tagName === 'DIV' && e.target.parentElement.classList.contains('icon');
+	    if (!isImage && !isLabel) return;
+
+	    e.preventDefault();
+
+	    const rect = icon.getBoundingClientRect();
+	    const dRect = desktop.getBoundingClientRect();
+	    shiftX = e.clientX - rect.left;
+	    shiftY = e.clientY - rect.top;
+	    let initialX = e.clientX;
+	    let initialY = e.clientY;
+
+	    function moveAt(pageX, pageY) {
+		if (!isDragging) {
+		    if (Math.abs(pageX - initialX) < 3 && Math.abs(pageY - initialY) < 3) return;
+		    icon.style.position = 'absolute';
+		    icon.style.left = rect.left - dRect.left + 'px';
+		    icon.style.top = rect.top - dRect.top + 'px';
+		    icon.style.zIndex = getMaxZIndex() + 1;
+		    isDragging = true;
+		}
+		icon.style.left = pageX - dRect.left - shiftX + 'px';
+		icon.style.top = pageY - dRect.top - shiftY + 'px';
+	    }
+
+	    function onMouseMove(e) {
+		moveAt(e.pageX, e.pageY);
+	    }
+
+	    document.addEventListener('mousemove', onMouseMove);
+
+	    document.onmouseup = function () {
+		document.removeEventListener('mousemove', onMouseMove);
+		document.onmouseup = null;
+		icon.style.zIndex = '';
+	    };
+	});
+
+        icon.ondragstart = () => false;
+    });
+    
+    // Deselect icons when clicking anywhere outside of them
+    document.addEventListener('click', (e) => {
+    	const clickedIcon = e.target.closest('.icon');
+	    if (!clickedIcon) {
+	        document.querySelectorAll('.icon.selected').forEach(icon => {
+                icon.classList.remove('selected');
+	        });
+	    }
+	});
+
+
+    desktop.style.position = 'relative';
+}
+
+window.onload = () => {
+    enableIconSelectionAndDragging();
+};
+/* ------------------------------------------------------------------------------------------------ */
+
 const taskbar = document.querySelector('.taskbar');
 
 function openWindow(id) {
@@ -99,6 +179,9 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+
+// START MENU RELATED
+
 const startButton = document.querySelector('.start-button');
 const startMenu = document.getElementById('start-menu');
 
@@ -166,4 +249,11 @@ function triggerShutdown() {
     setTimeout(() => {
         window.location.href = 'https://www.google.com/';
     }, 2500);
+}
+
+// DESKTOP RELATED
+
+function openPingMeWindow() {
+    openWindow('pingme-window'); // Show window
+    // window.location.href = "mailto:nisagenc.dev@gmail.com?subject=Hey%20Nisa!&body=Just%20dropping%20a%20line..."; // Trigger mail client
 }
