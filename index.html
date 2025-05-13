@@ -28,20 +28,69 @@
 
 <img src="images/logo-dark.png" alt="Nisanur Avatar" class="top-right-image">
 
+<!-- ......................................................DESKTOP ICONS.......................................................................................... -->
+
 <div class="desktop">
-    <div class="icon" onclick="openWindow('control-panel-window')">
+    <div class="icon" ondblclick="openWindow('control-panel-window')">
         <img src="https://win98icons.alexmeub.com/icons/png/directory_control_panel-3.png" alt="Control Panel">
         <div>Control Panel</div>
     </div>
-    <div class="icon" onclick="openWindow('about-me-window')">
+    <div class="icon" ondblclick="openWindow('about-me-window')">
 	<img src="https://win98icons.alexmeub.com/icons/png/notepad-3.png" alt="About Me">
   	<div>AboutMe.txt</div>
     </div>
+    <div class="icon" ondblclick="openWindow('education-window')">
+        <img src="https://win98icons.alexmeub.com/icons/png/certificate-0.png">
+        <div>Education</div>
+    </div>
+    <div class="icon" ondblclick="openWindow('experience-window')">
+        <img src="https://win98icons.alexmeub.com/icons/png/web_file_set-4.png">
+        <div>Experience</div>
+    </div>
+    <div class="icon" ondblclick="openWindow('skills-window')">
+        <img src="https://win98icons.alexmeub.com/icons/png/gears-0.png">
+        <div>Skills</div>
+    </div>
+    <div class="icon" ondblclick="openWindow('about-me-window')">
+	<img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_full_cool-0.png" alt="Recycle Bin">
+	<div>Recycle Bin</div>
+    </div>
+    <div class="icon" ondblclick="openWindow('about-me-window')">
+	<img src="https://win98icons.alexmeub.com/icons/png/game_freecell-2.png" alt="Games">
+	<div>Games</div>
+    </div>
+
+    <div class="icon" ondblclick="openWindow('about-me-window')">
+	<img src="https://win98icons.alexmeub.com/icons/png/multimedia-4.png" alt="Multimedia">
+	<div>Multimedia</div>
+    </div>
+    <div class="icon" ondblclick="openWindow('about-me-window')">
+	<img src="https://win98icons.alexmeub.com/icons/png/console_prompt-0.png" alt="AI Lab">
+	<div>ai_core.sys</div>
+    </div>
+    <div class="icon" ondblclick="openPingMeWindow()">
+	<img src="https://win98icons.alexmeub.com/icons/png/outlook_express-5.png" alt="Mailbox">
+	<div>PingMe.exe</div>
+    </div>
+    <div class="icon" ondblclick="window.open('https://developer.nvidia.com/blog/personalized-learning-with-gipi-nvidia-tensortrt-llm-and-ai-foundation-models/', '_blank')">
+    	<img src="https://win98icons.alexmeub.com/icons/png/html2-5.png" alt="Link">
+	<div>My Blog Post on NVIDIA</div>
+    </div>
+    <div class="icon" ondblclick="window.open('https://www.aa.com.tr/tr/dosya-haber/abdden-dondu-turkiyede-yapay-zeka-calisiyor/3222235', '_blank')">
+    	<img src="https://win98icons.alexmeub.com/icons/png/html2-5.png" alt="Link">
+	<div>ME on Anadolu Agency</div>
+    </div>     
+    <div class="icon" ondblclick="window.open('https://www.aa.com.tr/tr/bilim-teknoloji/yapay-zeka-gipi-yarim-milyon-kisinin-arkadasi-oldu/3210237', '_blank')">
+    	<img src="https://win98icons.alexmeub.com/icons/png/html2-5.png" alt="Link">
+	<div>Gipi on Anadolu Agency</div>
+    </div>    
 </div>
+
+<!-- ......................................................POP UP WINDOWS.......................................................................................... -->
 
 <!-- Control Panel Window -->
 <div class="window" id="control-panel-window" style="font-size: 16px; top: 100px; left: 100px;">
-    <div class="title-bar" onmousedown="startDrag(event, 'control-panel-window')">
+    <div class="title-bar" onmousedown="Drag(event, 'control-panel-window')">
         <div class="title-bar-text">Control Panel</div>
         <div class="title-bar-controls">
     		<button aria-label="Minimize" onclick="minimizeWindow('control-panel-window')"></button>
@@ -182,12 +231,29 @@ I'm especially motivated by the intersection of AI and social impact. I believe 
     </div>
 </div>
 
+<!-- Pingme Window -->
+<div class="window" id="pingme-window" style="display: none; width: 400px;">
+  <div class="title-bar" onmousedown="startDrag(event, 'pingme-window')">
+    <div class="title-bar-text">PingMe.exe</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" onclick="minimizeWindow('pingme-window')"></button>
+      <button aria-label="Close" onclick="closeWindow('pingme-window')"></button>
+    </div>
+  </div>
+  <div class="window-body" style="font-size: 14px; padding: 12px;">
+    <p>📬 <b>Email:</b> <a href="mailto:nisagenc.dev@gmail.com">nisagenc.dev@gmail.com</a></p>
+    <p>🔗 <b>LinkedIn:</b> <a href="https://linkedin.com/in/nisanurgenc" target="_blank">/nisanurgenc</a></p>
+    <p style="margin-top: 10px;">Say hi, ask a question, or just drop a friendly message!</p>
+  </div>
+</div>
+
+<!-- ......................................................TASKBAR RELATED.......................................................................................... -->
+
 <!-- Taskbar Start Button -->
 <div class="taskbar">
-    <button class="start-button style="top: 50%">
-        <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start" style="top: 50%; width:16px; height:16px; margin-right:4px;">
-        <b style="top: 50%">Start</b>
-    </button>
+  <button class="start-button" style="cursor: pointer; image-rendering: pixelated;">
+    <img src="https://win98icons.alexmeub.com/images/start-button.png" alt="Start Button">
+  </button>
 </div>
 
 <!-- Start Menu -->
